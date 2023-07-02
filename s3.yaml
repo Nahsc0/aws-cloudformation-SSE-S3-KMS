@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'A CloudFormation Stack to create S3 bucket, EC2 Instance Bootstrapped with Jenkins and Security group'
+Description: 'A CloudFormation Stack to create S3 bucket'
 
 Parameters:
   BucketName:
@@ -29,7 +29,7 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: !If [IsSSES3, AES256, aws:kms]
-              KMSMasterKeyID: !If [IsKMS, !Ref KMSKeyID, !Ref 'AWS::NoValue']
+
 
 Outputs:
   S3Bucket:
